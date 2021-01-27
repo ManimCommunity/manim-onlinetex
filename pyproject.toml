@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "manim-onlinetex"
+version = "0.1.4"
+description = "A Manim Plugin that renders LaTeX for Mobjects like Tex and MathTex via online services."
+license = "MIT"
+authors = ["Aathish Sivasubrahmanian <aathish04@gmail.com>"]
+readme = "README.md"
+classifiers= [
+    "Development Status :: 4 - Beta",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Multimedia :: Video",
+    "Topic :: Multimedia :: Graphics",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+	"Programming Language :: Python :: 3.9",
+    "Natural Language :: English",
+]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+manim = "*"
+requests = "^2.25.1"
+
+[tool.poetry.plugins."manim.plugins"]
+"manim_onlinetex" = "manim_onlinetex"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
