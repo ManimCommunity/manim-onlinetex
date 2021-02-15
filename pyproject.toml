@@ -19,9 +19,9 @@ classifiers= [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = "^3.6.2"
 manim = "*"
-requests = "^2.25.1"
+requests = "*"
 
 [tool.poetry.plugins."manim.plugins"]
 "manim_onlinetex" = "manim_onlinetex"
