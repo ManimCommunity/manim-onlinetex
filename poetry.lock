@@ -69,20 +69,35 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 
 [[package]]
+name = "importlib-metadata"
+version = "1.7.0"
+description = "Read metadata from Python packages"
+category = "main"
+optional = false
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
+
+[package.dependencies]
+zipp = ">=0.5"
+
+[package.extras]
+docs = ["sphinx", "rst.linker"]
+testing = ["packaging", "pep517", "importlib-resources (>=1.3)"]
+
+[[package]]
 name = "manim"
-version = "0.2.0"
+version = "0.3.0"
 description = "Animation engine for explanatory math videos."
 category = "main"
 optional = false
-python-versions = ">=3.6,<4.0"
+python-versions = ">=3.6.2,<4.0.0"
 
 [package.dependencies]
 colour = "*"
-manimpango = ">=0.1.4,<0.2.0"
+importlib-metadata = {version = ">=1.0,<2.0", markers = "python_version < \"3.8\""}
+manimpango = ">=0.2.0,<0.3.0"
 networkx = ">=2.5,<3.0"
 numpy = "*"
 Pillow = "*"
-progressbar = "*"
 pycairo = ">=1.19,<2.0"
 pydub = "*"
 pygments = "*"
@@ -91,11 +106,12 @@ scipy = "*"
 tqdm = "*"
 
 [package.extras]
-js_renderer = ["grpcio (>=1.33.0,<1.34.0)", "grpcio-tools (>=1.33.0,<1.34.0)", "watchdog"]
+webgl_renderer = ["grpcio (>=1.33.0,<1.34.0)", "grpcio-tools (>=1.33.0,<1.34.0)", "watchdog"]
+jupyterlab = ["jupyterlab (>=3.0,<4.0)"]
 
 [[package]]
 name = "manimpango"
-version = "0.1.7"
+version = "0.2.2"
 description = "Bindings for Pango for using with Manim."
 category = "main"
 optional = false
@@ -142,14 +158,6 @@ optional = false
 python-versions = ">=3.6"
 
 [[package]]
-name = "progressbar"
-version = "2.5"
-description = "Text progress bar library for Python."
-category = "main"
-optional = false
-python-versions = "*"
-
-[[package]]
 name = "pycairo"
 version = "1.20.0"
 description = "Python interface for cairo"
@@ -167,7 +175,7 @@ python-versions = "*"
 
 [[package]]
 name = "pygments"
-version = "2.7.4"
+version = "2.8.0"
 description = "Pygments is a syntax highlighting package written in Python."
 category = "main"
 optional = false
@@ -222,7 +230,7 @@ numpy = ">=1.14.5"
 
 [[package]]
 name = "tqdm"
-version = "4.56.0"
+version = "4.56.2"
 description = "Fast, Extensible Progress Meter"
 category = "main"
 optional = false
@@ -253,10 +261,22 @@ brotli = ["brotlipy (>=0.6.0)"]
 secure = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "certifi", "ipaddress"]
 socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 
+[[package]]
+name = "zipp"
+version = "3.4.0"
+description = "Backport of pathlib-compatible object wrapper for zip files"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.extras]
+docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
+testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake8", "pytest-cov", "jaraco.test (>=3.2.0)", "jaraco.itertools", "func-timeout", "pytest-black (>=0.3.7)", "pytest-mypy"]
+
 [metadata]
 lock-version = "1.1"
-python-versions = "^3.6"
-content-hash = "af2ddd41c8c3694442b98cff943aa4b3a173f5c2034c25a23c41fa15a10b8d49"
+python-versions = "^3.6.2"
+content-hash = "d70ebd353c2b0b2b5b4cc7d233b0e38abac4c593a048df22623efef38e28b3de"
 
 [metadata.files]
 certifi = [
@@ -291,36 +311,40 @@ idna = [
     {file = "idna-2.10-py2.py3-none-any.whl", hash = "sha256:b97d804b1e9b523befed77c48dacec60e6dcb0b5391d57af6a65a312a90648c0"},
     {file = "idna-2.10.tar.gz", hash = "sha256:b307872f855b18632ce0c21c5e45be78c0ea7ae4c15c828c20788b26921eb3f6"},
 ]
+importlib-metadata = [
+    {file = "importlib_metadata-1.7.0-py2.py3-none-any.whl", hash = "sha256:dc15b2969b4ce36305c51eebe62d418ac7791e9a157911d58bfb1f9ccd8e2070"},
+    {file = "importlib_metadata-1.7.0.tar.gz", hash = "sha256:90bb658cdbbf6d1735b6341ce708fc7024a3e14e99ffdc5783edea9f9b077f83"},
+]
 manim = [
-    {file = "manim-0.2.0-py3-none-any.whl", hash = "sha256:71228425caf7d3677142a6ebf0056352e5cc4b6a57ab5e5d89bea26b8e8ed74a"},
-    {file = "manim-0.2.0.tar.gz", hash = "sha256:01925f8550b5dd96275259e1943a12216d18f851202aa88abde16d660148638f"},
+    {file = "manim-0.3.0-py3-none-any.whl", hash = "sha256:280c6d10b828012cddb98145f1de9411fa00b9edf112c8f04faa6ebd353d5b97"},
+    {file = "manim-0.3.0.tar.gz", hash = "sha256:87166696e0d1d841c5721c545c55209fa4b6dce95f0327b79eb8ef3debc8c11b"},
 ]
 manimpango = [
-    {file = "manimpango-0.1.7-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:9583620057479bd094b725d2bf8bd047a8a16780ba7c8cf8f6718ea13c81725d"},
-    {file = "manimpango-0.1.7-cp36-cp36m-manylinux2010_i686.whl", hash = "sha256:6d792e5c42ea4298450675ca1ef23f5cf71cb85f1071f90cb5890a1734b1034e"},
-    {file = "manimpango-0.1.7-cp36-cp36m-manylinux2014_i686.whl", hash = "sha256:9b6a09ea5f8c0d5ffb3592fc9cd4d18f447b1c4552d4a60b25612ef17ca4deb2"},
-    {file = "manimpango-0.1.7-cp36-cp36m-manylinux2014_x86_64.whl", hash = "sha256:54d747c26f67c5e38ddf4fb60357eb2e48a9d6c096d8a5428c26fbe94b259489"},
-    {file = "manimpango-0.1.7-cp36-cp36m-win32.whl", hash = "sha256:3bd92ac167910aec23da3c0cbdf5fcbe34a87601f4c81c6e571c257c093b9389"},
-    {file = "manimpango-0.1.7-cp36-cp36m-win_amd64.whl", hash = "sha256:8093065d0620aa0ba7121049e4cde75bf51adcf1851ab51e3550d4c6ba87e736"},
-    {file = "manimpango-0.1.7-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:c156567e03d8d3aad62c0841618de278fd5eb86e9c66cda5b155501f5fa512a1"},
-    {file = "manimpango-0.1.7-cp37-cp37m-manylinux2010_i686.whl", hash = "sha256:9a2e2f07a8ddc8a03cb2e34f00f26dcfdcffde608fc0254138589bc09225ba5c"},
-    {file = "manimpango-0.1.7-cp37-cp37m-manylinux2014_i686.whl", hash = "sha256:2c7a912c0da32e56fe4aa7174bdef303d92332984db0acaba704468c7ffeeca5"},
-    {file = "manimpango-0.1.7-cp37-cp37m-manylinux2014_x86_64.whl", hash = "sha256:aaa69a1630cbbd3151ca51bd126e152fc791e0a96dd278415c6ca0e34db131a9"},
-    {file = "manimpango-0.1.7-cp37-cp37m-win32.whl", hash = "sha256:b5f06548e11f341c237838e00258e7860452f6df02f0d950666bf4b5ee51e779"},
-    {file = "manimpango-0.1.7-cp37-cp37m-win_amd64.whl", hash = "sha256:f2b7fc5b7cf72a73bcd939896020aee15c85ddbd7d99a8b8bc33871413943e6c"},
-    {file = "manimpango-0.1.7-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:a10cacc57bc066a54b14092e3c61c09f2f9beefe8889165859b9450ca5e25d96"},
-    {file = "manimpango-0.1.7-cp38-cp38-manylinux2010_i686.whl", hash = "sha256:241218aaaa57b6f23591a02965fd4fbb1ac801cb444d03baae35715fa992b482"},
-    {file = "manimpango-0.1.7-cp38-cp38-manylinux2014_i686.whl", hash = "sha256:9e6ddb4f28393e18fa926e41000c1068e3cfbe741b53f61fe6bbf7957c93bf9f"},
-    {file = "manimpango-0.1.7-cp38-cp38-manylinux2014_x86_64.whl", hash = "sha256:49e145600f065b4d0743a3cf581c1da5b6b084e7c46f389cb3de6e2831494331"},
-    {file = "manimpango-0.1.7-cp38-cp38-win32.whl", hash = "sha256:7bb8085d20e10d49ae70a398f38b9f86aa34cf2de29ed2620f083bd9e3ac6a59"},
-    {file = "manimpango-0.1.7-cp38-cp38-win_amd64.whl", hash = "sha256:1eb05900c1f448531ed821fb01a6f20d605f755adf4a118424038e3c0d04e8f1"},
-    {file = "manimpango-0.1.7-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:8ad67d0b915d76759d3449c8a8f2f17644126a032d852803642069719e8c9c84"},
-    {file = "manimpango-0.1.7-cp39-cp39-manylinux2010_i686.whl", hash = "sha256:922856eca8b910a33938fc6b94becf8145d8caa25ecee90b2ce75e4991b295e9"},
-    {file = "manimpango-0.1.7-cp39-cp39-manylinux2014_i686.whl", hash = "sha256:ced04b06ea11daadb864c0643e2fd73b1ede3cd2fe3d516038c6824a4470f67f"},
-    {file = "manimpango-0.1.7-cp39-cp39-manylinux2014_x86_64.whl", hash = "sha256:25342a244ffccbae8648ffc55395de77dcbb1ec70ca1984e3a7e3c1ed337eaed"},
-    {file = "manimpango-0.1.7-cp39-cp39-win32.whl", hash = "sha256:4220246ec3374e95510303fe42c5261aa1a5f41c7d1fb070b0a0a4bf647c1357"},
-    {file = "manimpango-0.1.7-cp39-cp39-win_amd64.whl", hash = "sha256:57415de688824300df945182a75565bcf0231840a524f02cb345bd550849692e"},
-    {file = "manimpango-0.1.7.tar.gz", hash = "sha256:9971fc49569f55c785b49e508db85d46b3184acb0981f12d8b96b47ca535018e"},
+    {file = "ManimPango-0.2.2-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:107b620e5c634ea58bc4ecfcb1480e791c814426a3d21aa79ce8092f30936e8f"},
+    {file = "ManimPango-0.2.2-cp36-cp36m-manylinux2010_i686.whl", hash = "sha256:0a7797de35c2a0107bd2d5d389c151bd0745d61ec3c5e0d3e537859c8e3414c0"},
+    {file = "ManimPango-0.2.2-cp36-cp36m-manylinux2014_i686.whl", hash = "sha256:fc1f3e90de3ba645d1c94db86e0ac669dc16b6757cc0ead6bb9cb3876d854077"},
+    {file = "ManimPango-0.2.2-cp36-cp36m-manylinux2014_x86_64.whl", hash = "sha256:b53febf1046ee2c494f16ea8653a7945468696549c011bbae8ed9ec7a7340879"},
+    {file = "ManimPango-0.2.2-cp36-cp36m-win32.whl", hash = "sha256:f8b09e765707012fa3b357baa3e0f3bc9233047ce9e85c95bce3908becd7ff67"},
+    {file = "ManimPango-0.2.2-cp36-cp36m-win_amd64.whl", hash = "sha256:ddc1515f6d29b25f85d2f5b75d058ad6093b334b456c575c754e87574ec05c8d"},
+    {file = "ManimPango-0.2.2-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:7607981e69579445c0b6ca84f2534da1ccc95e0611f7d3aae7984c91f10f4f37"},
+    {file = "ManimPango-0.2.2-cp37-cp37m-manylinux2010_i686.whl", hash = "sha256:c728df27a684131885dd168cf6058a63c4a46f35a30ef215ce0235c1baf8c2a1"},
+    {file = "ManimPango-0.2.2-cp37-cp37m-manylinux2014_i686.whl", hash = "sha256:45a89385c9ae69c8621f7a8d60055ae22070ad1d71721800b2a9b88bd0d45638"},
+    {file = "ManimPango-0.2.2-cp37-cp37m-manylinux2014_x86_64.whl", hash = "sha256:ec61775acf21bf2b1afa00516c2a8ed50caeacd8d9542e70b416e0075b36a075"},
+    {file = "ManimPango-0.2.2-cp37-cp37m-win32.whl", hash = "sha256:f8a14c4b863b6d3b8a7ea294b7544ae0156b4402e55b1afb6f122ab32af33054"},
+    {file = "ManimPango-0.2.2-cp37-cp37m-win_amd64.whl", hash = "sha256:f8300574e5b2454a32b41553c1c5ac1341cf07890708313eb86bccad74ae9d43"},
+    {file = "ManimPango-0.2.2-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:bf0593e3ea0f9f2064ec871e258865ae590b520b45cd4c1eb43498dc44fa6850"},
+    {file = "ManimPango-0.2.2-cp38-cp38-manylinux2010_i686.whl", hash = "sha256:0f6402831c43090510b663f2e8522c3f1da69a1805ffde0ec120a45614076837"},
+    {file = "ManimPango-0.2.2-cp38-cp38-manylinux2014_i686.whl", hash = "sha256:714485d0f81274ab64b2373c406e23849ae4ec36601c1391d2f13e61654185ac"},
+    {file = "ManimPango-0.2.2-cp38-cp38-manylinux2014_x86_64.whl", hash = "sha256:b85262ce20572aae126bce7c148139e4dbd2d726022159289c36bcadea927de4"},
+    {file = "ManimPango-0.2.2-cp38-cp38-win32.whl", hash = "sha256:8cc28ac8fbff36e5cf52dd95b4406dfbd66cb161768b4ac5babb08f15c7244ef"},
+    {file = "ManimPango-0.2.2-cp38-cp38-win_amd64.whl", hash = "sha256:a7e19887518a38b0246b3b2841f6d1c924e590fdddb7fc07efbd9964e540769a"},
+    {file = "ManimPango-0.2.2-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:30856cb7273950fc151cb2cf7d92e4ffed8d06a2dcd161ccafe3f43bc61fad2d"},
+    {file = "ManimPango-0.2.2-cp39-cp39-manylinux2010_i686.whl", hash = "sha256:9d69926314f2b687bbb4b080c4403055feafb4c16eec45e6c022c8e65af30d08"},
+    {file = "ManimPango-0.2.2-cp39-cp39-manylinux2014_i686.whl", hash = "sha256:7040d3bc30182e12daf39211d29d6dd7ba8b784a7f3ec634eb12a58c1af0639d"},
+    {file = "ManimPango-0.2.2-cp39-cp39-manylinux2014_x86_64.whl", hash = "sha256:59333666d31ca386075c26f61871191370d51dda68e409762acebd644dfb350c"},
+    {file = "ManimPango-0.2.2-cp39-cp39-win32.whl", hash = "sha256:c8f1929632c613cbfd0e543ff55dfa532b45fad017544901703ea30d7729d958"},
+    {file = "ManimPango-0.2.2-cp39-cp39-win_amd64.whl", hash = "sha256:fc0cc700dae9e89fd0cef86a92c881a528715c66a19ef0dd30fc0136af14ec3f"},
+    {file = "ManimPango-0.2.2.tar.gz", hash = "sha256:1b54a75afbbae481e5ac46a227e6c01d0e9bca996db56886f78bb7aa42560886"},
 ]
 networkx = [
     {file = "networkx-2.5-py3-none-any.whl", hash = "sha256:8c5812e9f798d37c50570d15c4a69d5710a18d77bafc903ee9c5fba7454c616c"},
@@ -396,9 +420,6 @@ pillow = [
     {file = "Pillow-8.1.0-pp37-pypy37_pp73-win32.whl", hash = "sha256:b6f00ad5ebe846cc91763b1d0c6d30a8042e02b2316e27b05de04fa6ec831ec5"},
     {file = "Pillow-8.1.0.tar.gz", hash = "sha256:887668e792b7edbfb1d3c9d8b5d8c859269a0f0eba4dda562adb95500f60dbba"},
 ]
-progressbar = [
-    {file = "progressbar-2.5.tar.gz", hash = "sha256:5d81cb529da2e223b53962afd6c8ca0f05c6670e40309a7219eacc36af9b6c63"},
-]
 pycairo = [
     {file = "pycairo-1.20.0-cp36-cp36m-win32.whl", hash = "sha256:e5a3433690c473e073a9917dc8f1fc7dc8b9af7b201bf372894b8ad70d960c6d"},
     {file = "pycairo-1.20.0-cp36-cp36m-win_amd64.whl", hash = "sha256:a942614923b88ae75c794506d5c426fba9c46a055d3fdd3b8db7046b75c079cc"},
@@ -415,8 +436,8 @@ pydub = [
     {file = "pydub-0.24.1.tar.gz", hash = "sha256:630c68bfff9bb27cbc5e1f02923f717c3bc5f4d73fd685fda08b6ce90f76dc69"},
 ]
 pygments = [
-    {file = "Pygments-2.7.4-py3-none-any.whl", hash = "sha256:bc9591213a8f0e0ca1a5e68a479b4887fdc3e75d0774e5c71c31920c427de435"},
-    {file = "Pygments-2.7.4.tar.gz", hash = "sha256:df49d09b498e83c1a73128295860250b0b7edd4c723a32e9bc0d295c7c2ec337"},
+    {file = "Pygments-2.8.0-py3-none-any.whl", hash = "sha256:b21b072d0ccdf29297a82a2363359d99623597b8a265b8081760e4d0f7153c88"},
+    {file = "Pygments-2.8.0.tar.gz", hash = "sha256:37a13ba168a02ac54cc5891a42b1caec333e59b66addb7fa633ea8a6d73445c0"},
 ]
 requests = [
     {file = "requests-2.25.1-py2.py3-none-any.whl", hash = "sha256:c210084e36a42ae6b9219e00e48287def368a26d03a048ddad7bfee44f75871e"},
@@ -454,8 +475,8 @@ scipy = [
     {file = "scipy-1.5.4.tar.gz", hash = "sha256:4a453d5e5689de62e5d38edf40af3f17560bfd63c9c5bd228c18c1f99afa155b"},
 ]
 tqdm = [
-    {file = "tqdm-4.56.0-py2.py3-none-any.whl", hash = "sha256:4621f6823bab46a9cc33d48105753ccbea671b68bab2c50a9f0be23d4065cb5a"},
-    {file = "tqdm-4.56.0.tar.gz", hash = "sha256:fe3d08dd00a526850568d542ff9de9bbc2a09a791da3c334f3213d8d0bbbca65"},
+    {file = "tqdm-4.56.2-py2.py3-none-any.whl", hash = "sha256:a89be573bfddb81bb0b395a416d5e55e3ecc73ce95a368a4f6360bedea33195e"},
+    {file = "tqdm-4.56.2.tar.gz", hash = "sha256:11d544652edbdfc9cc41aa4c8a5c166513e279f3f2d9f1a9e1c89935b51de6ff"},
 ]
 typing-extensions = [
     {file = "typing_extensions-3.7.4.3-py2-none-any.whl", hash = "sha256:dafc7639cde7f1b6e1acc0f457842a83e722ccca8eef5270af2d74792619a89f"},
@@ -465,4 +486,8 @@ typing-extensions = [
 urllib3 = [
     {file = "urllib3-1.26.3-py2.py3-none-any.whl", hash = "sha256:1b465e494e3e0d8939b50680403e3aedaa2bc434b7d5af64dfd3c958d7f5ae80"},
     {file = "urllib3-1.26.3.tar.gz", hash = "sha256:de3eedaad74a2683334e282005cd8d7f22f4d55fa690a2a1020a416cb0a47e73"},
+]
+zipp = [
+    {file = "zipp-3.4.0-py3-none-any.whl", hash = "sha256:102c24ef8f171fd729d46599845e95c7ab894a4cf45f5de11a44cc7444fb1108"},
+    {file = "zipp-3.4.0.tar.gz", hash = "sha256:ed5eee1974372595f9e416cc7bbeeb12335201d8081ca8a0743c954d4446e5cb"},
 ]
