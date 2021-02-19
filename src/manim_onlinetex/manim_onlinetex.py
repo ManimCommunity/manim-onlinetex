@@ -9,7 +9,7 @@ import manim.mobject.svg.tex_mobject
 
 def tex_to_svg_file_online(expression, environment=None, tex_template=None):
     """Takes a tex expression and returns the path to the svg file of the compiled tex
-    after compiling it via one of two online rendering services: LaTeX4Technics or QuickLaTeX
+    after compiling it via one of two online rendering services: LaTeXCluster or QuickLaTeX
 
     Parameters
     ----------
@@ -29,17 +29,17 @@ def tex_to_svg_file_online(expression, environment=None, tex_template=None):
         tex_template = config["tex_template"]
     tex_file = generate_tex_file(expression, environment, tex_template)
 
-    # NOTE: quicklatex is a much smaller service than Latex4Technics. As such, it is preferred that
-    # quicklatex be used if and only if latex4technics is down.
+    # NOTE: QuickLaTeX is a much smaller service than LaTeXCluster. As such, it is preferred that
+    # quicklatex be used if and only if LaTeXCluster is down.
 
     hosts = [
-        "https://www.latex4technics.com/compileLatex",
+        "https://www.latexcluster.org/api/compileLatex",
         "https://www.quicklatex.com/latex3.f",
     ]
 
     hostid = (
         1
-        if urllib.request.urlopen("https://www.latex4technics.com/").getcode() != 200
+        if urllib.request.urlopen("https://www.latexcluster.org").getcode() != 200
         else 0
     )
 

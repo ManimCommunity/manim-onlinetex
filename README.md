@@ -1,7 +1,7 @@
 # manim-onlinetex
 
 A Manim Plugin that renders LaTeX for Mobjects like `Tex` and `MathTex` via online services.
-This plugin will try to render the LaTeX required by such Mobjects via [LaTeX4Technics](https://www.latex4technics.com/), and if for some reason LaTeX4Technics is down, will attempt to use [QuickLaTeX](https://quicklatex.com/).
+This plugin will try to render the LaTeX required by such Mobjects via [LaTeXCluster](https://www.latexcluster.org/), and if for some reason LaTeXCluster is down, will attempt to use [QuickLaTeX](https://quicklatex.com/).
 
 ## Usage instructions
 
@@ -17,3 +17,7 @@ Plugin is doing its job, then the `Tex` folder of your `media`
 directory should have the source `.tex` file, the final `.svg` 
 file, and no intermediary files (like `.dvi` files), since that's
 all handled by the online service.
+
+## Limitations
+
+Please avoid clearing the Tex directory of your media directory. This is so you don't contact the external LaTeX rendering APIs too often and put an unnecessary strain on their servers.
