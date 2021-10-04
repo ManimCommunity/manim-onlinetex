@@ -37,11 +37,14 @@ def tex_to_svg_file_online(expression, environment=None, tex_template=None):
         "https://www.quicklatex.com/latex3.f",
     ]
 
-    hostid = (
-        1
-        if urllib.request.urlopen("https://www.latexcluster.org").getcode() != 200
-        else 0
-    )
+    try:
+        hostid = (
+            1
+            if urllib.request.urlopen("https://www.latexcluster.org").getcode() != 200
+            else 0
+        )
+    except urllib.error.HTTPError:
+        hostid = 1
 
     if hostid == 0:
         params = {
