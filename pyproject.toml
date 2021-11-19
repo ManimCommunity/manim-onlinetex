@@ -5,6 +5,8 @@ description = "A Manim Plugin that renders LaTeX for Mobjects like Tex and MathT
 license = "MIT"
 authors = ["The Manim Community Developers"]
 readme = "README.md"
+homepage = "https://github.com/ManimCommunity/manim-onlinetex"
+repository = "https://github.com/ManimCommunity/manim-onlinetex"
 classifiers= [
     "Development Status :: 4 - Beta",
     "License :: OSI Approved :: MIT License",
