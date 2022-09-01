@@ -4,7 +4,7 @@ import base64
 
 from manim import config, logger
 from manim.utils.tex_file_writing import generate_tex_file
-import manim.mobject.svg.tex_mobject
+import manim.mobject.text.tex_mobject
 
 
 def tex_to_svg_file_online(expression, environment=None, tex_template=None):
@@ -60,7 +60,6 @@ def tex_to_svg_file_online(expression, environment=None, tex_template=None):
         }
         payload = params
     elif hostid == 1:
-        begin, end = tex_template._texcode_for_environment(environment)
         if environment is not None:
             begin, end = tex_template._texcode_for_environment(environment)
             formula = f"{begin}\n{expression}\n{end}"
@@ -109,4 +108,4 @@ def tex_to_svg_file_online(expression, environment=None, tex_template=None):
     return svgfilepath
 
 
-manim.mobject.svg.tex_mobject.tex_to_svg_file = tex_to_svg_file_online
+manim.mobject.text.tex_mobject.tex_to_svg_file = tex_to_svg_file_online
