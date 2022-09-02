@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "manim-onlinetex"
-version = "0.1.1"
+version = "0.2.0"
 description = "A Manim Plugin that renders LaTeX for Mobjects like Tex and MathTex via online services."
 license = "MIT"
 authors = ["The Manim Community Developers"]
